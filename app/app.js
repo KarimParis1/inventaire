@@ -1,7 +1,7 @@
 /**
  * Created by Victor on 27/04/2016.
  */
-var app = angular.module('inventaire', ['ngMaterial', 'ngRoute']);
+var app = angular.module('inventaire', ['ngMaterial', 'ngRoute','md.data.table']);
 
 // Configuration des routes
 app.config(function ($routeProvider) {

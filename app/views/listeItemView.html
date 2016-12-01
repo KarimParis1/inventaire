@@ -1,0 +1,55 @@
+<md-toolbar>
+    <div class="md-toolbar-tools" md-whiteframe="2">
+        <md-button ng-click="getBack()" class="md-icon-button">
+            <md-icon md-svg-icon="icons/back.svg"></md-icon>
+        </md-button>
+        <h2><span>Liste of items</span></h2>
+        <span flex></span>
+        <md-button ng-click="addItem($event)" class="md-icon-button">
+            <md-icon md-svg-icon="icons/add.svg"></md-icon>
+        </md-button>
+        <md-button ng-click="logout()" class="md-icon-button">
+            <md-icon md-svg-icon="icons/logout.svg"></md-icon>
+        </md-button>
+    </div>
+</md-toolbar>
+
+<md-content layout="column" flex>
+
+
+    <div layout="row">
+        <md-input-container flex=50>
+            <md-icon md-svg-icon="icons/search.svg"></md-icon>
+            <label>Recherche</label>
+            <input ng-model="search" type="text">
+        </md-input-container>
+        <md-input-container flex>
+            <md-icon md-svg-icon="icons/filter.svg"></md-icon>
+            <label>Trier par</label>
+            <md-select ng-model="selectedTrie">
+                <md-option ng-repeat="trie in tries" value="{{trie.value}}">
+                    {{trie.name}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+
+    <div flex >
+        <md-list>
+            <md-list-item class="md-3-line" ng-repeat="item in items | filter:search | orderBy:selectedTrie"">
+                <img ng-src="{{item.image}}" class="md-avatar"/>
+                <div class="md-list-item-text" layout="column">
+                    <h3>{{item.name}}</h3>
+                    <h4>{{item.description}}</h4>
+                    <p>{{item.categorie}}</p>
+                </div>
+                <md-icon ng-click="edit()" flex="5" md-svg-icon="icons/edit.svg"></md-icon>
+                <md-icon ng-click="delete()" flex="5" md-svg-icon="icons/delete.svg"></md-icon>
+            </md-list-item>
+        </md-list>
+
+    </div>
+
+
+</md-content>
+

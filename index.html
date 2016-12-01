@@ -8,7 +8,7 @@
 
     <!--Angular Material CSS-->
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
-
+    <link href="bower_components/angular-material-data-table/dist/md-data-table.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="styles/g-only-style.css">
 
 </head>
@@ -20,6 +20,9 @@
 
 <!--Rendering the views-->
 <div ng-view></div>
+<md-toolbar id="footer" class="md-tall">
+    <span></span>
+</md-toolbar>
 
 <!--Rendering the views-->
 
@@ -51,6 +54,8 @@
 
 <!--Controllers-->
 <script src="app/controllers/LoginController.js"></script>
+<script src="app/controllers/ListeItemController.js"></script>
+<script src="app/controllers/FichesController.js"></script>
 
 <!--Directives-->
 

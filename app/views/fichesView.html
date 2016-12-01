@@ -1,0 +1,39 @@
+<md-toolbar>
+    <div class="md-toolbar-tools" md-whiteframe="2">
+        <h2><span>Fugees-App</span></h2>
+        <span flex></span>
+        <md-button ng-click="showAlert($event)" class="md-icon-button">
+            <md-icon md-svg-icon="icons/add.svg"></md-icon>
+        </md-button>
+        <md-button ng-click="logout()" class="md-icon-button">
+            <md-icon md-svg-icon="icons/logout.svg"></md-icon>
+        </md-button>
+
+    </div>
+</md-toolbar>
+
+<div flex layout="column" style="background-color: #FFFFFF;">
+    <md-table-container>
+        <table md-table>
+            <thead md-head md-order="autoOrder">
+            <tr md-row>
+                <th md-column md-order-by="collab.nomCh">Lastname</th>
+                <th md-column md-order-by="dateDebutPointeuse">Description</th>
+                <th md-column md-order-by="heureDebutPointeuse" md-numeric>Last Update</th>
+            </tr>
+            </thead>
+            <tbody md-body>
+            <tr md-row
+                ng-repeat="famille in familles | orderBy:autoOrder" md-select="famille" md-select-id="lastname"
+                md-auto-select>
+                <td md-cell ng-click="goToListes(famille)">{{famille.lastname}}</td>
+                <td md-cell ng-click="goToListes(famille)">{{famille.description}}</td>
+                <td md-cell ng-click="goToListes(famille)">{{famille.update}}</td>
+                <td md-cell>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </md-table-container>
+
+</div>
