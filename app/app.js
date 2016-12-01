@@ -7,18 +7,25 @@ var app = angular.module('inventaire', ['ngMaterial', 'ngRoute']);
 app.config(function ($routeProvider) {
 
     $routeProvider
-        .when('/maps', {
-            controller: 'MapCtrl',
-            templateUrl: 'app/views/MapView.html'
+        .when('/', {
+            controller: 'LoginController',
+            templateUrl: 'app/views/loginView.html'
         })
+        .when('/signup', {
+            controller: 'InscriptionController',
+            templateUrl: 'app/views/inscriptionView.html'
+        })
+        .when('/fiches', {
+            controller: 'FichesController',
+            templateUrl: 'app/views/fichesView.html'
+        })
+        .when('/listeItem', {
+            controller: 'ListeItemController',
+            templateUrl: 'app/views/listeItemView.html'
+        })
+        .otherwise({
+            redirectTo: '/'
+        });
 
 });
 
-app.config(function (localStorageServiceProvider) {
-    localStorageServiceProvider
-        .setPrefix('inventaire');
-});
-
-
-
-});
