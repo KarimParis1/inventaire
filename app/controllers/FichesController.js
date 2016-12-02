@@ -2,7 +2,67 @@
  * Created by Victor on 01/12/2016.
  */
 
-angular.module('inventaire').controller('FichesController', function ($scope, $rootScope, $mdDialog, $mdToast, $location, $mdMedia) {
+angular.module('inventaire').controller('FichesController', function ($http,$scope, $rootScope, $mdDialog, $mdToast, $location, $mdMedia) {
+
+
+    //var search= "microsoft";
+    $scope.show=function(){
+        alert('vous avez cliqué');
+    }
+
+    $scope.show= function(article){
+
+        console.log(article);
+        $mdDialog.show({
+
+            templateUrl:'app/views/newsView.html',
+            clickOutsideToClose:true,
+            controller: function($scope,$mdDialog){
+                $scope.article = article;
+                $scope.hide=function(){$mdDialog.hide();};
+                $scope.cancel=function(){$mdDialog.cancel();};
+            }
+        })
+    }
+
+    $scope.go = function () {
+
+        var search = $scope.recherche;
+        $http.defaults.headers.common["Ocp-Apim-Subscription-Key"] = "fc0df77a54494178803a11aa25b36e2f";
+        $http.get('https://api.cognitive.microsoft.com/bing/v5.0/search?q='+$scope.recherche, {
+            headers: {
+            }
+        }).success(function(response){
+            $scope.data=response;
+            console.log($scope.data);
+            $scope.images=response.images.value;
+            $scope.news=response.news.value;
+
+            //console.log($scope.result);
+
+        });
+        $scope.recherche=" ";
+        $scope.bool= true;
+    }
+
+    /*$scope.suggest = function () {
+
+        var sug = $scope.mayberecherche;
+        $http.defaults.headers.common["Ocp-Apim-Subscription-Key"] = "fc0df77a54494178803a11aa25b36e2f";
+        $http.get('https://api.cognitive.microsoft.com/bing/v5.0/search?q='+$scope.recherche, {
+            headers: {
+            }
+        }).success(function(response){
+            $scope.resultats=response.news.value;
+           // console.log(response);
+            //console.log($scope.resultats);
+            $scope.recherche=" ";
+        });
+        $scope.recherche=" ";
+    }*/
+
+
+
 
     $scope.familles=[
         {

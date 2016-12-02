@@ -37,3 +37,62 @@
     </md-table-container>
 
 </div>
+
+
+<md-content class="md-no-momentum" layout-margin>
+    <h4>Search Engine</h4><br>
+    <form ng-submit="go()">
+    <md-input-container class="md-icon-float md-block">
+        <!-- Use floating label instead of placeholder -->
+        <label>Search</label>
+        <input ng-model="recherche" type="text" required ng-minlength="2" ng-maxlength="30">
+    </md-input-container>
+    </form>
+    <md-button ng-click="go()" class="md-raised md-primary">Search</md-button>
+    <!-- <div ng-repeat="res in result">
+         <p></p>
+         <img ng-src="{{res.contentUrl}}" alt="">
+
+     </div>-->
+    <div ng-show="bool">
+        <md-content>
+            <md-list>
+                <md-list-item class="md-3-line" ng-repeat="new in news" ng-click="null">
+                    <div class="md-list-item-text" ng-click="show(new)">
+                        <h4>{{new.datePublished | date}}</h4>
+                        <p>{{new.description}}</p>
+                    </div>
+                    <md-divider ng-if="!$last"></md-divider>
+                </md-list-item>
+            </md-list>
+        </md-content>
+        <!---->
+
+
+</md-content>
+    <h3 >Images</h3>
+    <!--Début GridList-->
+    <md-grid-list
+            md-cols-xs="3" md-cols-sm="4" md-cols-md="5" md-cols-gt-md="5"
+            md-row-height-gt-md="1:1" md-row-height="2:2"
+            md-gutter="12px" md-gutter-gt-sm="8px" >
+        <md-grid-tile ng-repeat="image in images"
+                      md-rowspan="{{}}"
+                      md-colspan="{{}}"
+                      >
+            <!--<md-grid-tile-header style="color:black;background: {{letter.color}}">
+
+            </md-grid-tile-header>-->
+            <!--<img ng-src="{{letter.picture}}" layout-fill>-->
+            <img ng-src="{{image.contentUrl}}" layout-fill>
+        </md-grid-tile>
+    </md-grid-list>
+</div>
+    <!--Fin GRIDLIST-->
+    <!--<h3>News</h3>
+    <div ng-repeat=" new in news">
+        <p>{{new.datePublished | date}}</p>
+        <p>{{new.description}}</p>
+    </div>-->
+
+  <!---->
